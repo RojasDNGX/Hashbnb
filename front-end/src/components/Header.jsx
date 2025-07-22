@@ -53,7 +53,7 @@ const Header = () => {
             </svg>
           </div>
 
-          <div>
+          <Link to="/login">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ const Header = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </div>
+          </Link>
 
           <p className="max-w-16 truncate sm:max-w-32">Minha conta</p>
         </div>
