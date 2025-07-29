@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ user }) => {
+  console.log(user);
   return (
     <header className="shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
@@ -35,7 +36,10 @@ const Header = () => {
             </svg>
           </div>
         </div>
-        <div className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 shadow-md">
+        <Link
+          to={user ? "/account" : "/login"}
+          className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 shadow-md"
+        >
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +72,12 @@ const Header = () => {
             </svg>
           </Link>
 
-          <p className="max-w-16 truncate sm:max-w-32">Minha conta</p>
-        </div>
+          {user ? (
+            <p className="max-w-16 truncate sm:max-w-32">{user.name}</p>
+          ) : (
+            <></>
+          )}
+        </Link>
       </div>
     </header>
   );
