@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
+import { useUserContext } from "../contexts/UserContext";
 
-const Register = ({ setUser }) => {
+const Register = () => {
+  const { setUser } = useUserContext();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,19 +15,20 @@ const Register = ({ setUser }) => {
 
     if (name && email && password) {
       try {
-        await axios.post("/users/register", {
+        const { data: userDoc } = await axios.post("/users", {
           name,
           email,
           password,
         });
 
+        setUser(userDoc);
         alert("Cadastro realizado com sucesso!");
         setRedirect(true);
       } catch (error) {
-        alert(`Deu um erro ao registrar: ${error.response.data}`);
+        alert(`Deu um erro ao cadastrar o usuário: ${error.response.data}`);
       }
     } else {
-      alert("Você precisa preencher todos os campos");
+      alert("Você precisa preencher o nome, e-mail e senha!");
     }
   };
 

@@ -24,7 +24,7 @@ const Item = () => {
         </p>
       </div>
       <p>
-        <spam className="font-bold">R$ 550</spam> por noite
+        <span className="font-bold">R$ 550</span> por noite
       </p>
     </Link>
   );
